@@ -1,7 +1,15 @@
-return { 
-  'marko-cerovac/material.nvim',
+return {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
   config = function()
-    vim.g.material_style = "deep ocean"
-    vim.cmd.colorscheme "material"
+    require("tokyonight").setup({
+      style = "storm",
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+      },
+    })
+    vim.cmd.colorscheme "tokyonight"
   end
-} 
+}
