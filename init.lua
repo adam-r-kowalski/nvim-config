@@ -24,12 +24,14 @@ vim.o.cmdheight = 0
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", ";", ":", {})
-vim.keymap.set("n", "<c-h>", "<c-w>h", {})
-vim.keymap.set("n", "<c-j>", "<c-w>j", {})
-vim.keymap.set("n", "<c-k>", "<c-w>k", {})
-vim.keymap.set("n", "<c-l>", "<c-w>l", {})
-vim.keymap.set('i', 'jk', '<esc>', {})
+local opt = { noremap = true, silent = true }
+
+vim.keymap.set("n", ";", ":", opt)
+vim.keymap.set("n", "<c-h>", "<c-w>h", opt)
+vim.keymap.set("n", "<c-j>", "<c-w>j", opt)
+vim.keymap.set("n", "<c-k>", "<c-w>k", opt)
+vim.keymap.set("n", "<c-l>", "<c-w>l", opt)
+vim.keymap.set('i', 'jk', '<esc>', opt)
 
 vim.cmd [[
   augroup yeti

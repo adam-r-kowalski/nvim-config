@@ -15,6 +15,7 @@ return {
       keymaps = {
         send_motion = "s",
         visual_send = "s",
+        send_file = "<space>s",
       }
     })
   end
