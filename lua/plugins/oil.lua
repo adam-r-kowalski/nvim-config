@@ -6,5 +6,10 @@ return {
 		require("which-key").register({
 			["-"] = { require("oil").open, "file explorer" },
 		})
+		if #vim.fn.argv() == 0 then
+			vim.defer_fn(function()
+				require("oil").open()
+			end, 1)
+		end
 	end,
 }

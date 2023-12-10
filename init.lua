@@ -1,14 +1,14 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -31,13 +31,13 @@ vim.keymap.set("n", "<c-h>", "<c-w>h", opt)
 vim.keymap.set("n", "<c-j>", "<c-w>j", opt)
 vim.keymap.set("n", "<c-k>", "<c-w>k", opt)
 vim.keymap.set("n", "<c-l>", "<c-w>l", opt)
-vim.keymap.set('i', 'jk', '<esc>', opt)
+vim.keymap.set("i", "jk", "<esc>", opt)
 
-vim.cmd [[
+vim.cmd([[
   augroup yeti
     autocmd!
     autocmd BufRead,BufNewFile *.yeti set filetype=yeti
   augroup END
-]]
+]])
 
 require("lazy").setup("plugins")
