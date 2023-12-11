@@ -26,7 +26,7 @@ vim.g.mapleader = " "
 
 local opt = { noremap = true, silent = true }
 
-vim.keymap.set("n", ";", ":", opt)
+vim.keymap.set("n", ";", ":", { noremap = true })
 vim.keymap.set("n", "<c-h>", "<c-w>h", opt)
 vim.keymap.set("n", "<c-j>", "<c-w>j", opt)
 vim.keymap.set("n", "<c-k>", "<c-w>k", opt)
