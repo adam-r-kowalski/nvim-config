@@ -1,6 +1,14 @@
 return {
-	"shaunsingh/nord.nvim",
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme("nord")
+		require("tokyonight").setup({
+			styles = {
+				comments = { italic = true },
+				keywords = { italic = true },
+			},
+		})
+		vim.cmd([[colorscheme tokyonight-night]])
 	end,
 }

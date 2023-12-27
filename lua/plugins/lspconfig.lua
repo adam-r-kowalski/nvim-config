@@ -4,12 +4,17 @@ return {
 		"williamboman/mason.nvim",
 		"neovim/nvim-lspconfig",
 		"folke/neodev.nvim",
-		"nvimtools/none-ls.nvim",
 	},
 	config = function()
 		require("neodev").setup({})
 		require("mason").setup({})
-		local servers = { "rust_analyzer", "lua_ls", "pyright" }
+		local servers = {
+			"rust_analyzer",
+			"lua_ls",
+			"pyright",
+			"tailwindcss",
+			"html",
+		}
 		require("mason-lspconfig").setup({
 			ensure_installed = servers,
 			automatic_installation = true,
@@ -31,14 +36,6 @@ return {
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = vim.api.nvim_create_augroup("LspFormatting", {}),
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({ async = false })
-				end,
-			})
 		end
 
 		for _, server in ipairs(servers) do
@@ -47,13 +44,5 @@ return {
 				on_attach = on_attach,
 			})
 		end
-
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.black,
-			},
-		})
 	end,
 }
