@@ -6,7 +6,9 @@ return {
 		"folke/neodev.nvim",
 	},
 	config = function()
-		require("neodev").setup({})
+		require("neodev").setup({
+			library = { plugins = { "nvim-dap-ui" }, types = true },
+		})
 		require("mason").setup({})
 		local servers = {
 			"rust_analyzer",
@@ -14,6 +16,8 @@ return {
 			"pyright",
 			"tailwindcss",
 			"html",
+			"htmx",
+			"clangd",
 		}
 		require("mason-lspconfig").setup({
 			ensure_installed = servers,

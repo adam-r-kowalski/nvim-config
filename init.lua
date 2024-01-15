@@ -41,3 +41,20 @@ vim.cmd([[
 ]])
 
 require("lazy").setup("plugins")
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "cpp",
+	callback = function()
+		local wk = require("which-key")
+		wk.register({
+			b = {
+				function()
+					local command =
+						"cmake --preset=debug -B build/debug && cmake --build build/debug && cp build/debug/compile_commands.json . && ./build/debug/tapir"
+					vim.cmd("split | terminal " .. command)
+				end,
+				"Build and Run C++ Project in Terminal",
+			},
+		}, { prefix = "<leader>", buffer = 0 })
+	end,
+})
