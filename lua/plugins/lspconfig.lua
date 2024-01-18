@@ -43,10 +43,21 @@ return {
 		end
 
 		for _, server in ipairs(servers) do
-			lspconfig[server].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
+			if server ~= "clangd" then
+				lspconfig[server].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+				})
+			end
 		end
+
+		lspconfig["clangd"].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			cmd = {
+				"clangd",
+				"--offset-encoding=utf-16",
+			},
+		})
 	end,
 }
